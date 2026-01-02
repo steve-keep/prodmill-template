@@ -20,9 +20,8 @@ jobs:
 
       - name: Run init commands
         run: |
-          export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.beads/bin:$PATH"
+          export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
           specify init . --ai gemini --ignore-agent-tools --script sh --force
-          bd init
 
       - name: Create labels
         env:
