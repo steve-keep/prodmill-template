@@ -1,7 +1,6 @@
 name: Initialize Project
 
-on:
-  create:
+on: create
 
 jobs:
   init:
