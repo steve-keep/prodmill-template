@@ -1,11 +1,10 @@
 name: Initialize Project
 
-on: create
+on: push
 
 jobs:
   init:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
     permissions:
       contents: write
     steps:
@@ -23,11 +22,9 @@ jobs:
           specify init gemini --ai gemini --ignore-agent-tools --script sh
           bd init
 
-      - name: Git Commit/Push Changes
-        uses: actions-x/commit@v6
-
       - name: Self-destruct workflow
         run: |
-          git rm .github/workflows/init.yml
-          git commit -m "Remove initialization workflow"
-          git push
+          rm .github/workflows/init.yml
+
+      - name: Git Commit/Push Changes
+        uses: actions-x/commit@v6
