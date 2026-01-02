@@ -20,7 +20,7 @@ jobs:
       - name: Run init commands
         run: |
           export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.beads/bin:$PATH"
-          specify init . --ai gemini --ignore-agent-tools --script sh
+          specify init . --ai gemini --ignore-agent-tools --script sh --here
           bd init
 
       - name: Self-destruct workflow
