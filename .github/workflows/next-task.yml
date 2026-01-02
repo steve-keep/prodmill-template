@@ -1,0 +1,19 @@
+name: Next Task
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  next-task:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run ProdMill
+        uses: steve-keep/prodmill-engine@main
+        with:
+          mode: 'next-task'
+          jules_api_key: ${{ secrets.JULES_API_KEY }}
