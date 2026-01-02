@@ -23,6 +23,13 @@ jobs:
           specify init . --ai gemini --ignore-agent-tools --script sh --force
           bd init
 
+      - name: Create labels
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create "create-spec"
+          gh label create "update-constitution"
+
       - name: Self-destruct workflow
         run: |
           rm .github/workflows/init.yml
