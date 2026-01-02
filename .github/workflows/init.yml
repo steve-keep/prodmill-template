@@ -1,22 +1,17 @@
 name: Initialize Project
 
 on:
-  push:
-    branches:
-      - main
+  create:
 
 jobs:
   init:
     runs-on: ubuntu-latest
-    if: github.actor != 'github-actions[bot]'
+    if: github.ref == 'refs/heads/main' && github.actor != 'github-actions[bot]'
     permissions:
       contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Install uv
-        run: curl -LsSf https://astral.sh/uv/install.sh | sh
 
       - name: Install tools
         run: |
@@ -25,7 +20,7 @@ jobs:
 
       - name: Run init commands
         run: |
-          export PATH="$HOME/.local/bin:$HOME/.beads/bin:$PATH"
+          export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.beads/bin:$PATH"
           specify init gemini --ai gemini --ignore-agent-tools --script sh
           bd init
 
