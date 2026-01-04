@@ -8,6 +8,9 @@ jobs:
   update-constitution:
     if: contains(github.event.issue.labels.*.name, 'update-constitution')
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -16,5 +19,6 @@ jobs:
         uses: steve-keep/prodmill-engine@main
         with:
           mode: 'update-constitution'
-          jules_api_key: ${{ secrets.JULES_API_KEY }}
+          gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
           issue_body: ${{ github.event.issue.body }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
