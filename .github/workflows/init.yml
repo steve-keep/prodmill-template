@@ -29,6 +29,8 @@ jobs:
         run: |
           gh label create "create-spec"
           gh label create "update-constitution"
+          gh label create "create-plan"
+          gh label create "create-tasks"
 
       - name: Self-destruct workflow
         run: |
