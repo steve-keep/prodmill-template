@@ -10,11 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Run Prod-Mill Engine
+      - name: Run ProdMill
         uses: steve-keep/prodmill-engine@main
         with:
           mode: 'create-plan'
           jules_api_key: ${{ secrets.JULES_API_KEY }}
           issue_body: ${{ github.event.issue.body }}
+          issue_number: ${{ github.event.issue.number }}
