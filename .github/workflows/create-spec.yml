@@ -18,3 +18,4 @@ jobs:
           mode: 'create-spec'
           jules_api_key: ${{ secrets.JULES_API_KEY }}
           issue_body: ${{ github.event.issue.body }}
+          issue_number: ${{ github.event.issue.number }}
